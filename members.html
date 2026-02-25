@@ -1,356 +1,186 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOID — Участники</title>
 
 <style>
-*{ box-sizing:border-box; }
-:root{
-  --glass: rgba(10,10,14,.55);
-  --glass2: rgba(10,10,14,.28);
-  --stroke: rgba(255,255,255,.10);
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.70);
-  --gold1:#f0c84f;
-  --gold2:#d2a621;
+* { box-sizing: border-box; }
+
+body {
+    margin:0;
+    min-height:100vh;
+    background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color:white;
 }
 
-body{
-  margin:0;
-  min-height:100vh;
-  background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: Arial, sans-serif;
-  color: var(--text);
-  overflow-x:hidden;
+/* затемнение */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index:1;
 }
 
-.overlay{
-  position:fixed; inset:0;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,.35), rgba(0,0,0,.78));
-  pointer-events:none;
+/* логотип */
+.brand-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    z-index: 5;
+    mix-blend-mode: screen;
 }
 
-.topbar{
-  position:fixed;
-  top:0; left:0; right:0;
-  padding:18px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  z-index:10;
+/* контейнер */
+.center {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    margin: auto;
+    padding:120px 20px 60px;
 }
 
-.logo img{
-  width:78px;
-  filter: drop-shadow(0 0 16px rgba(168,112,255,.55));
+/* заголовок */
+h1 {
+    text-align:center;
+    margin-bottom:30px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.9);
 }
 
-.center{
-  min-height:100vh;
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  padding:110px 18px 70px;
+/* поиск */
+.search {
+    width:100%;
+    padding:15px;
+    border-radius:30px;
+    border:none;
+    margin-bottom:30px;
+    font-size:16px;
+    text-align:center;
 }
 
-.card{
-  width:min(920px, 92vw);
-  border-radius:26px;
-  background: linear-gradient(180deg, var(--glass), var(--glass2));
-  border: 1px solid var(--stroke);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 16px 55px rgba(0,0,0,.45);
-  overflow:hidden;
-  animation: pop .55s ease-out both;
+/* список */
+.member {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    margin-bottom:10px;
+    background: rgba(0,0,0,0.5);
+    border-radius:40px;
 }
 
-@keyframes pop{
-  from { transform: translateY(14px); opacity:0; }
-  to   { transform: translateY(0); opacity:1; }
+.role {
+    font-weight:bold;
 }
 
-.header{
-  padding:22px 22px 14px;
-  border-bottom:1px solid rgba(255,255,255,.10);
+/* роли */
+.leader { color: gold; }
+.dev { color: #00ff99; }
+.high { color: violet; }
+.member-role { color: #ccc; }
+
+/* кнопка назад */
+.back-btn {
+    display:block;
+    margin:40px auto 0;
+    padding:15px 40px;
+    border-radius:40px;
+    background: linear-gradient(45deg,#d4af37,#b8860b);
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+    text-align:center;
+    width:200px;
+    transition:0.3s;
 }
 
-.h1{
-  margin:0 0 10px;
-  font-size:22px;
-  font-weight:900;
-  text-shadow: 0 0 18px rgba(168,112,255,.35);
-}
-
-.sub{
-  margin:0;
-  color: var(--muted);
-  line-height:1.5;
-}
-
-.tools{
-  padding:14px 22px 18px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.search{
-  flex:1;
-  min-width:220px;
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-
-.search input{
-  width:100%;
-  padding:12px 14px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  outline:none;
-  background: rgba(0,0,0,.25);
-  color: var(--text);
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:12px 16px;
-  border-radius:14px;
-  background: linear-gradient(180deg, var(--gold1), var(--gold2));
-  color:#1b1400;
-  font-weight:900;
-  text-decoration:none;
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-  transition: transform .15s ease, box-shadow .15s ease;
-  white-space:nowrap;
-}
-.btn:hover{ transform: translateY(-2px); box-shadow: 0 16px 42px rgba(0,0,0,.42); }
-.btn:active{ transform: translateY(0); }
-
-.list{
-  padding:14px 14px 20px;
-}
-
-.item{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 12px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.18);
-  margin:10px 8px;
-}
-
-.avatar{
-  width:42px; height:42px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-  background: radial-gradient(circle at 30% 20%, rgba(168,112,255,.35), rgba(0,0,0,.15));
-  border:1px solid rgba(255,255,255,.14);
-  user-select:none;
-}
-
-.nick{
-  font-weight:900;
-  font-size:16px;
-}
-
-.role{
-  margin-left:auto;
-  font-weight:900;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(0,0,0,.25);
-  color: rgba(255,255,255,.88);
-}
-
-.role.leader{
-  background: rgba(255,215,64,.18);
-  border-color: rgba(255,215,64,.30);
-  text-shadow: 0 0 10px rgba(255,215,64,.20);
-}
-
-.role.high{
-  background: rgba(168,112,255,.18);
-  border-color: rgba(168,112,255,.30);
-  text-shadow: 0 0 10px rgba(168,112,255,.20);
-}
-
-.role.dev{
-  background: rgba(100,255,180,.14);
-  border-color: rgba(100,255,180,.25);
-  text-shadow: 0 0 10px rgba(100,255,180,.18);
-}
-
-.role.member{
-  background: rgba(255,255,255,.10);
-  border-color: rgba(255,255,255,.14);
-}
-
-.count{
-  padding:0 22px 18px;
-  color: rgba(255,255,255,.65);
-  font-size:12px;
-}
-
-#particles{
-  position:fixed; inset:0;
-  z-index:2;
-  pointer-events:none;
+.back-btn:hover {
+    transform: scale(1.08);
 }
 </style>
 </head>
 
 <body>
-<canvas id="particles"></canvas>
-<div class="overlay"></div>
 
-<div class="topbar">
-  <div class="logo">
-    <img src="https://i.imgur.com/9mQpZkF.png" alt="VOID" />
-  </div>
-</div>
+<div class="overlay"></div>
+<img src="logo.png" class="brand-logo" alt="VOID logo">
 
 <div class="center">
-  <div class="card">
-    <div class="header">
-      <h1 class="h1">👥 Список участников VOID</h1>
-      <p class="sub">По порядку. Поиск работает. Роли выделены.</p>
-    </div>
 
-    <div class="tools">
-      <div class="search">
-        <input id="q" type="text" placeholder="Поиск по нику… (например: Sok / Neon / Felix)" />
-      </div>
-      <a class="btn" href="index.html">← Назад</a>
-    </div>
+<h1>Список участников VOID</h1>
 
-    <div class="count" id="count"></div>
-    <div class="list" id="list"></div>
-  </div>
+<input type="text" id="search" class="search" placeholder="Поиск">
+
+<div id="list"></div>
+
+<a href="index.html" class="back-btn">← Назад</a>
+
 </div>
 
 <script>
-/* ====== РЕДАКТИРУЙ ТУТ СПИСОК ====== */
 const members = [
-  { nick: "Sok | 243740", role: "Лидер", tag: "leader" },
-  { nick: "xorelsem", role: "Программист", tag: "dev" },
+  {nick:"Sok | 243740", role:"Лидер", class:"leader"},
+  {nick:"xorelsem", role:"Программист", class:"dev"},
+  {nick:"ダークプリンス", role:"Хай состав", class:"high"},
+  {nick:"Felix | 11306", role:"Хай состав", class:"high"},
+  {nick:"Neon | 21898", role:"Хай состав", class:"high"},
 
-  { nick: "ダークプリンス", role: "Хай состав", tag: "high" },
-  { nick: "Felix | 11306", role: "Хай состав", tag: "high" },
-  { nick: "Neon | 21898", role: "Хай состав", tag: "high" },
-
-  { nick: "l.shayrma", role: "Участник", tag: "member" },
-  { nick: "Arseniy Tokorev | 2870", role: "Участник", tag: "member" },
-  { nick: "Andrey Diaz", role: "Участник", tag: "member" },
-  { nick: "Danonchik", role: "Участник", tag: "member" },
-  { nick: "funochi", role: "Участник", tag: "member" },
-  { nick: "iSakume_RU", role: "Участник", tag: "member" },
-  { nick: "Jacobo | 265853", role: "Участник", tag: "member" },
-  { nick: "Kano | 246352", role: "Участник", tag: "member" },
-  { nick: "Koco | 1337", role: "Участник", tag: "member" },
-  { nick: "M.MPlDavaga | void | 281...", role: "Участник", tag: "member" },
-  { nick: "Mario", role: "Участник", tag: "member" },
-  { nick: "Monster", role: "Участник", tag: "member" },
-  { nick: "pasha", role: "Участник", tag: "member" },
-  { nick: "Shura | 278990", role: "Участник", tag: "member" },
-  { nick: "So1m_so", role: "Участник", tag: "member" },
-  { nick: "SOMZO", role: "Участник", tag: "member" },
-  { nick: "Sosori Yamato |", role: "Участник", tag: "member" },
-  { nick: "Stasik Kolbasenko...", role: "Участник", tag: "member" },
-  { nick: "Temych | 276919", role: "Участник", tag: "member" },
-
-  { nick: "Timau Exotique | 28...", role: "Участник", tag: "member" },
-  { nick: "Uncoverj", role: "Участник", tag: "member" },
-  { nick: "VASA", role: "Участник", tag: "member" },
-  { nick: "Viktor", role: "Участник", tag: "member" },
-  { nick: "Vlad | 246362", role: "Участник", tag: "member" },
-  { nick: "Walter | 280095", role: "Участник", tag: "member" },
-  { nick: "ytka_TiV", role: "Участник", tag: "member" }
+  {nick:"l.shayrma", role:"Участник", class:"member-role"},
+  {nick:"Arseniy Tokorev | 2870", role:"Участник", class:"member-role"},
+  {nick:"Andrey Diaz", role:"Участник", class:"member-role"},
+  {nick:"Danonchik", role:"Участник", class:"member-role"},
+  {nick:"funochi", role:"Участник", class:"member-role"},
+  {nick:"iSakume_RU", role:"Участник", class:"member-role"},
+  {nick:"Jacobo | 265853", role:"Участник", class:"member-role"},
+  {nick:"Kano | 246352", role:"Участник", class:"member-role"},
+  {nick:"Koco | 1337", role:"Участник", class:"member-role"},
+  {nick:"M.MPlDavaga | void", role:"Участник", class:"member-role"},
+  {nick:"Mario", role:"Участник", class:"member-role"},
+  {nick:"Monster", role:"Участник", class:"member-role"},
+  {nick:"pasha", role:"Участник", class:"member-role"},
+  {nick:"Shura | 278990", role:"Участник", class:"member-role"},
+  {nick:"So1m_so", role:"Участник", class:"member-role"},
+  {nick:"SOMZO", role:"Участник", class:"member-role"},
+  {nick:"Sosori Yamato", role:"Участник", class:"member-role"},
+  {nick:"Stasik Kolbasenko", role:"Участник", class:"member-role"},
+  {nick:"Temych | 276919", role:"Участник", class:"member-role"},
+  {nick:"Timau Exotique", role:"Участник", class:"member-role"},
+  {nick:"Uncoverj", role:"Участник", class:"member-role"},
+  {nick:"VASA", role:"Участник", class:"member-role"},
+  {nick:"Viktor", role:"Участник", class:"member-role"},
+  {nick:"Vlad | 246362", role:"Участник", class:"member-role"},
+  {nick:"Walter | 280095", role:"Участник", class:"member-role"},
+  {nick:"ytka_TiV", role:"Участник", class:"member-role"}
 ];
-/* ====== КОНЕЦ СПИСКА ====== */
 
-const list = document.getElementById('list');
-const q = document.getElementById('q');
-const count = document.getElementById('count');
+const list = document.getElementById("list");
+const search = document.getElementById("search");
 
-function initials(text){
-  const clean = (text || "").trim();
-  if(!clean) return "V";
-  // берем первые 2 буквы первого слова
-  const first = clean.split(/\s+/)[0].replace(/[^A-Za-zА-Яа-я0-9一-龥ぁ-ゔァ-ヴー々〆〤]/g,'');
-  return (first.slice(0,2) || clean.slice(0,2)).toUpperCase();
+function render(filter="") {
+  list.innerHTML = "";
+  members
+    .filter(m => m.nick.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(m => {
+      list.innerHTML += `
+        <div class="member">
+          <div>${m.nick}</div>
+          <div class="role ${m.class}">${m.role}</div>
+        </div>
+      `;
+    });
 }
 
-function render(){
-  const term = q.value.trim().toLowerCase();
-  const filtered = members.filter(m => m.nick.toLowerCase().includes(term));
+search.addEventListener("input", e => render(e.target.value));
 
-  list.innerHTML = filtered.map(m => `
-    <div class="item">
-      <div class="avatar">${initials(m.nick)}</div>
-      <div>
-        <div class="nick">${m.nick}</div>
-      </div>
-      <div class="role ${m.tag}">${m.role}</div>
-    </div>
-  `).join("");
-
-  count.textContent = `Всего: ${filtered.length} / ${members.length}`;
-}
-
-q.addEventListener('input', render);
 render();
-
-/* частицы */
-const c = document.getElementById('particles');
-const ctx = c.getContext('2d');
-let w, h, particles;
-
-function resize(){
-  w = c.width = window.innerWidth;
-  h = c.height = window.innerHeight;
-  particles = Array.from({length: 85}, () => ({
-    x: Math.random()*w,
-    y: Math.random()*h,
-    r: Math.random()*2 + 0.6,
-    s: Math.random()*0.7 + 0.2,
-    a: Math.random()*Math.PI*2
-  }));
-}
-window.addEventListener('resize', resize);
-resize();
-
-function tick(){
-  ctx.clearRect(0,0,w,h);
-  ctx.fillStyle = 'rgba(255,255,255,0.75)';
-  for(const p of particles){
-    p.y += p.s;
-    p.x += Math.sin(p.a) * 0.25;
-    p.a += 0.01;
-    if(p.y > h+10){ p.y = -10; p.x = Math.random()*w; }
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-    ctx.fill();
-  }
-  requestAnimationFrame(tick);
-}
-tick();
 </script>
+
 </body>
 </html>
