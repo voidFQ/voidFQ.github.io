@@ -17,9 +17,9 @@ body {
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
     color:white;
-    overflow:hidden;
 }
 
+/* затемнение */
 .overlay {
     position: fixed;
     inset: 0;
@@ -27,21 +27,16 @@ body {
     z-index:1;
 }
 
-/* VOID слева */
-.brand {
+/* ЛОГО В УГЛУ */
+.brand-logo {
     position: fixed;
-    top: 25px;
-    left: 25px;
-    font-size: 30px;
-    font-weight: 900;
+    top: 20px;
+    left: 20px;
+    width: 180px;
     z-index: 3;
-    color:black;
-    letter-spacing:4px;
 
-    text-shadow:
-        0 0 5px #8a2be2,
-        0 0 15px #8a2be2,
-        0 0 30px #a855f7;
+    /* убираем чёрный фон */
+    mix-blend-mode: screen;
 }
 
 /* Центр */
@@ -70,7 +65,7 @@ body {
     text-shadow: 0 0 6px rgba(0,0,0,0.8);
 }
 
-/* Кнопка КОРОЛЬ */
+/* Кнопка */
 .king-btn {
     margin-top:50px;
     padding:20px 55px;
@@ -96,23 +91,15 @@ body {
         0 0 40px #ffb700,
         0 0 80px rgba(255,215,0,0.9);
 }
-
-/* частицы */
-canvas {
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:2;
-}
 </style>
 </head>
 
 <body>
 
 <div class="overlay"></div>
-<canvas id="particles"></canvas>
 
-<div class="brand">VOID</div>
+<!-- ВАЖНО: положи картинку в ту же папку и назови logo.png -->
+<img src="logo.png" class="brand-logo">
 
 <div class="center">
     <div class="text-block">
@@ -134,68 +121,6 @@ VOID — это репутация. Это уровень. Это стиль.
         👑 Стать королём
     </a>
 </div>
-
-<script>
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-class Particle {
-    constructor(){
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.6 - 0.3;
-        this.speedY = Math.random() * 0.6 - 0.3;
-    }
-
-    update(){
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if(this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if(this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-    }
-
-    draw(){
-        ctx.fillStyle = "rgba(168,85,247,0.9)";
-        ctx.shadowColor = "#a855f7";
-        ctx.shadowBlur = 12;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-        ctx.fill();
-    }
-}
-
-function init(){
-    particles = [];
-    for(let i=0;i<150;i++){
-        particles.push(new Particle());
-    }
-}
-
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{
-        p.update();
-        p.draw();
-    });
-    requestAnimationFrame(animate);
-}
-
-init();
-animate();
-
-window.addEventListener("resize", ()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    init();
-});
-</script>
 
 </body>
 </html>
