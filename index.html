@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VOID FQ</title>
 
-<!-- Мафиозный шрифт -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet">
 
 <style>
@@ -23,7 +22,7 @@ body {
     overflow:hidden;
 }
 
-/* Затемнение */
+/* затемнение */
 .overlay {
     position: fixed;
     inset: 0;
@@ -31,7 +30,7 @@ body {
     z-index:1;
 }
 
-/* ЛОГО */
+/* логотип */
 .brand-logo {
     position: fixed;
     top: 20px;
@@ -47,7 +46,7 @@ body {
     to { opacity:1; }
 }
 
-/* Центр */
+/* центр */
 .center {
     position: relative;
     z-index: 3;
@@ -62,23 +61,22 @@ body {
     min-height:100vh;
 }
 
-/* Текст без рамки */
+/* текст */
 .text-block {
-    font-size:24px;
-    line-height:1.9;
-    letter-spacing:1.5px;
+    font-size:26px;
+    line-height:2;
+    letter-spacing:2px;
     max-width:850px;
 
     text-shadow:
-        0 0 10px rgba(0,0,0,0.8),
-        0 0 25px rgba(0,0,0,0.6);
+        0 0 10px rgba(0,0,0,0.9),
+        0 0 30px rgba(0,0,0,0.6);
 
     animation: fadeUp 2s ease forwards;
     opacity:0;
     transform: translateY(30px);
 }
 
-/* Анимация текста */
 @keyframes fadeUp {
     to {
         opacity:1;
@@ -86,22 +84,22 @@ body {
     }
 }
 
-/* Кнопка */
+/* кнопка */
 .king-btn {
-    margin-top:60px;
-    padding:22px 70px;
-    font-size:26px;
+    margin-top:70px;
+    padding:25px 80px;
+    font-size:28px;
     font-weight:900;
-    border-radius:4px;
+    border-radius:50px; /* более круглая */
     text-decoration:none;
     color:#111;
     background: linear-gradient(45deg,#d4af37,#b8860b);
     transition:0.3s;
     display:inline-block;
-    letter-spacing:2px;
+    letter-spacing:3px;
 
     box-shadow:
-        0 0 15px rgba(212,175,55,0.7);
+        0 0 20px rgba(212,175,55,0.8);
 
     opacity:0;
     transform: translateY(30px);
@@ -110,10 +108,10 @@ body {
 }
 
 .king-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.12);
     box-shadow:
-        0 0 25px rgba(212,175,55,1),
-        0 0 60px rgba(212,175,55,0.8);
+        0 0 35px rgba(212,175,55,1),
+        0 0 80px rgba(212,175,55,0.9);
 }
 </style>
 </head>
@@ -126,19 +124,18 @@ body {
 
 <div class="center">
     <div class="text-block">
-VOID — сила. Стиль. Дисциплина.<br><br>
+🔥 VOID — сила. Стиль. Дисциплина. 🔥<br><br>
 
-Мы не участвуем в игре.<br>
-Мы управляем ею.<br><br>
+🎩 Мы не участвуем в игре.<br>
+♟ Мы управляем ею.<br><br>
 
-Капты — под контролем.<br>
-Бизнес — под влиянием.<br>
-Конкуренция — под давлением.<br><br>
+💰 Бизнес — под влиянием.<br>
+⚔ Капты — под контролем.<br>
+👑 Конкуренция — под давлением.<br><br>
 
-VOID — это не просто название.<br>
-Это статус.<br>
+VOID — это статус.<br>
 Это власть.<br>
-Это наследие.
+Это наследие. 🖤
     </div>
 
     <a class="king-btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
