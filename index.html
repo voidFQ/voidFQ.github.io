@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VOID FQ</title>
 
+<!-- Новый шрифт -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
 * { box-sizing: border-box; }
 
@@ -15,27 +18,25 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', sans-serif;
     color:white;
 }
 
-/* затемнение */
+/* Делаем фон ярче */
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.35); /* было 0.55 — стало светлее */
     z-index:1;
 }
 
-/* ЛОГО В УГЛУ */
+/* ЛОГО */
 .brand-logo {
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 180px;
+    width: 200px;
     z-index: 3;
-
-    /* убираем чёрный фон */
     mix-blend-mode: screen;
 }
 
@@ -56,19 +57,20 @@ body {
 
 /* Почти прозрачный блок */
 .text-block {
-    background: rgba(0,0,0,0.15);
-    padding:30px;
+    background: rgba(0,0,0,0.12);
+    padding:35px;
     border-radius:20px;
-    backdrop-filter: blur(6px);
-    font-size:20px;
-    line-height:1.6;
-    text-shadow: 0 0 6px rgba(0,0,0,0.8);
+    backdrop-filter: blur(4px);
+    font-size:21px;
+    line-height:1.8;
+    letter-spacing:1px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
 }
 
 /* Кнопка */
 .king-btn {
     margin-top:50px;
-    padding:20px 55px;
+    padding:22px 60px;
     font-size:24px;
     font-weight:900;
     border-radius:16px;
@@ -87,9 +89,9 @@ body {
 .king-btn:hover {
     transform: scale(1.12);
     box-shadow:
-        0 0 20px #ffd700,
-        0 0 40px #ffb700,
-        0 0 80px rgba(255,215,0,0.9);
+        0 0 25px #ffd700,
+        0 0 50px #ffb700,
+        0 0 90px rgba(255,215,0,0.9);
 }
 </style>
 </head>
@@ -98,7 +100,6 @@ body {
 
 <div class="overlay"></div>
 
-<!-- ВАЖНО: положи картинку в ту же папку и назови logo.png -->
 <img src="logo.png" class="brand-logo">
 
 <div class="center">
