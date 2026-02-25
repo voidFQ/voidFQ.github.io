@@ -12,11 +12,18 @@ body {
     margin:0;
     min-height:100vh;
     background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
-    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: Arial, sans-serif; /* обычный строгий */
+    background-size: 100%;
+    animation: bgZoom 25s ease-in-out infinite alternate;
+    font-family: Arial, sans-serif;
     color:white;
+}
+
+/* Плавный zoom */
+@keyframes bgZoom {
+  from { background-size: 100%; }
+  to { background-size: 110%; }
 }
 
 /* затемнение */
@@ -52,15 +59,21 @@ body {
     min-height:100vh;
 }
 
-/* текст без рамки */
+/* текст */
 .text-block {
     font-size:22px;
-    line-height:1.6; /* более сплюснутый */
-    letter-spacing:0.5px; /* меньше растяжки */
+    line-height:1.6;
+    letter-spacing:0.5px;
     max-width:850px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+}
 
-    text-shadow:
-        0 0 8px rgba(0,0,0,0.9);
+/* достижения */
+.stats {
+    margin-top:40px;
+    font-size:20px;
+    opacity:0.95;
+    line-height:1.8;
 }
 
 /* кнопка */
@@ -77,15 +90,19 @@ body {
     display:inline-block;
     letter-spacing:1px;
 
-    box-shadow:
-        0 0 15px rgba(212,175,55,0.8);
+    box-shadow:0 0 15px rgba(212,175,55,0.8);
+    animation: pulse 2.5s infinite;
+}
+
+/* Пульсация кнопки */
+@keyframes pulse {
+  0% { box-shadow:0 0 15px rgba(212,175,55,0.8); }
+  50% { box-shadow:0 0 40px rgba(212,175,55,1); }
+  100% { box-shadow:0 0 15px rgba(212,175,55,0.8); }
 }
 
 .king-btn:hover {
     transform: scale(1.1);
-    box-shadow:
-        0 0 30px rgba(212,175,55,1),
-        0 0 70px rgba(212,175,55,0.9);
 }
 </style>
 </head>
@@ -113,6 +130,12 @@ VOID — это не просто название.<br>
 Это стиль игры.<br><br>
 
 💜 VOID — будь частью легенды.
+    </div>
+
+    <div class="stats">
+        🏆 1 место на каптах<br>
+        💰 20+ бизнесов под контролем<br>
+        👥 50+ активных участников
     </div>
 
     <a class="king-btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
