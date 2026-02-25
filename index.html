@@ -59,20 +59,21 @@ body {
     min-height:100vh;
 }
 
-/* Текст блок */
+/* Почти прозрачный блок */
 .text-block {
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.15);
     padding:30px;
     border-radius:20px;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
     font-size:20px;
     line-height:1.6;
+    text-shadow: 0 0 6px rgba(0,0,0,0.8);
 }
 
 /* Кнопка КОРОЛЬ */
 .king-btn {
     margin-top:50px;
-    padding:20px 50px;
+    padding:20px 55px;
     font-size:24px;
     font-weight:900;
     border-radius:16px;
@@ -172,7 +173,7 @@ class Particle {
 
 function init(){
     particles = [];
-    for(let i=0;i<140;i++){
+    for(let i=0;i<150;i++){
         particles.push(new Particle());
     }
 }
