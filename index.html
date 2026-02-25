@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VOID FQ</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet">
-
 <style>
 * { box-sizing: border-box; }
 
@@ -17,9 +15,8 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: 'Cinzel', serif;
+    font-family: Arial, sans-serif; /* обычный строгий */
     color:white;
-    overflow:hidden;
 }
 
 /* затемнение */
@@ -38,12 +35,6 @@ body {
     width: 200px;
     z-index: 3;
     mix-blend-mode: screen;
-    animation: fadeInLogo 2s ease forwards;
-    opacity:0;
-}
-
-@keyframes fadeInLogo {
-    to { opacity:1; }
 }
 
 /* центр */
@@ -61,57 +52,40 @@ body {
     min-height:100vh;
 }
 
-/* текст */
+/* текст без рамки */
 .text-block {
-    font-size:26px;
-    line-height:2;
-    letter-spacing:2px;
+    font-size:22px;
+    line-height:1.6; /* более сплюснутый */
+    letter-spacing:0.5px; /* меньше растяжки */
     max-width:850px;
 
     text-shadow:
-        0 0 10px rgba(0,0,0,0.9),
-        0 0 30px rgba(0,0,0,0.6);
-
-    animation: fadeUp 2s ease forwards;
-    opacity:0;
-    transform: translateY(30px);
-}
-
-@keyframes fadeUp {
-    to {
-        opacity:1;
-        transform: translateY(0);
-    }
+        0 0 8px rgba(0,0,0,0.9);
 }
 
 /* кнопка */
 .king-btn {
-    margin-top:70px;
-    padding:25px 80px;
-    font-size:28px;
+    margin-top:60px;
+    padding:22px 70px;
+    font-size:24px;
     font-weight:900;
-    border-radius:50px; /* более круглая */
+    border-radius:60px;
     text-decoration:none;
     color:#111;
     background: linear-gradient(45deg,#d4af37,#b8860b);
     transition:0.3s;
     display:inline-block;
-    letter-spacing:3px;
+    letter-spacing:1px;
 
     box-shadow:
-        0 0 20px rgba(212,175,55,0.8);
-
-    opacity:0;
-    transform: translateY(30px);
-    animation: fadeUp 2s ease forwards;
-    animation-delay:1s;
+        0 0 15px rgba(212,175,55,0.8);
 }
 
 .king-btn:hover {
-    transform: scale(1.12);
+    transform: scale(1.1);
     box-shadow:
-        0 0 35px rgba(212,175,55,1),
-        0 0 80px rgba(212,175,55,0.9);
+        0 0 30px rgba(212,175,55,1),
+        0 0 70px rgba(212,175,55,0.9);
 }
 </style>
 </head>
@@ -124,18 +98,21 @@ body {
 
 <div class="center">
     <div class="text-block">
-🔥 VOID — сила. Стиль. Дисциплина. 🔥<br><br>
+🔥 <b>VOID — сила, стиль и дисциплина.</b> 🔥 <br><br>
 
-🎩 Мы не участвуем в игре.<br>
-♟ Мы управляем ею.<br><br>
+Наша фама VOID — одна из самых сильных и организованных на проекте Majestic Role Play, сервер Miami.<br><br>
 
-💰 Бизнес — под влиянием.<br>
-⚔ Капты — под контролем.<br>
-👑 Конкуренция — под давлением.<br><br>
+Мы не просто играем — мы доминируем.<br>
+⚔️ Войны? — Мы там.<br>
+💰 Бизнес? — Мы в деле.<br>
+🏆 Конкуренция? — Мы создаём её.<br><br>
 
-VOID — это статус.<br>
-Это власть.<br>
-Это наследие. 🖤
+VOID — это не просто название.<br>
+Это репутация.<br>
+Это уровень.<br>
+Это стиль игры.<br><br>
+
+💜 VOID — будь частью легенды.
     </div>
 
     <a class="king-btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
