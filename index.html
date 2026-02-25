@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VOID FQ</title>
 
-<!-- Новый шрифт -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<!-- Мафиозный шрифт -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet">
 
 <style>
 * { box-sizing: border-box; }
@@ -18,15 +18,16 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Cinzel', serif;
     color:white;
+    overflow:hidden;
 }
 
-/* Делаем фон ярче */
+/* Затемнение */
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.35); /* было 0.55 — стало светлее */
+    background: rgba(0,0,0,0.35);
     z-index:1;
 }
 
@@ -38,6 +39,12 @@ body {
     width: 200px;
     z-index: 3;
     mix-blend-mode: screen;
+    animation: fadeInLogo 2s ease forwards;
+    opacity:0;
+}
+
+@keyframes fadeInLogo {
+    to { opacity:1; }
 }
 
 /* Центр */
@@ -55,43 +62,58 @@ body {
     min-height:100vh;
 }
 
-/* Почти прозрачный блок */
+/* Текст без рамки */
 .text-block {
-    background: rgba(0,0,0,0.12);
-    padding:35px;
-    border-radius:20px;
-    backdrop-filter: blur(4px);
-    font-size:21px;
-    line-height:1.8;
-    letter-spacing:1px;
-    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    font-size:24px;
+    line-height:1.9;
+    letter-spacing:1.5px;
+    max-width:850px;
+
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.8),
+        0 0 25px rgba(0,0,0,0.6);
+
+    animation: fadeUp 2s ease forwards;
+    opacity:0;
+    transform: translateY(30px);
+}
+
+/* Анимация текста */
+@keyframes fadeUp {
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
 }
 
 /* Кнопка */
 .king-btn {
-    margin-top:50px;
-    padding:22px 60px;
-    font-size:24px;
+    margin-top:60px;
+    padding:22px 70px;
+    font-size:26px;
     font-weight:900;
-    border-radius:16px;
+    border-radius:4px;
     text-decoration:none;
-    color:black;
-    background: linear-gradient(45deg,#ffd700,#ffb700);
+    color:#111;
+    background: linear-gradient(45deg,#d4af37,#b8860b);
     transition:0.3s;
     display:inline-block;
+    letter-spacing:2px;
 
     box-shadow:
-        0 0 10px #ffd700,
-        0 0 25px #ffb700,
-        0 0 50px rgba(255,215,0,0.6);
+        0 0 15px rgba(212,175,55,0.7);
+
+    opacity:0;
+    transform: translateY(30px);
+    animation: fadeUp 2s ease forwards;
+    animation-delay:1s;
 }
 
 .king-btn:hover {
-    transform: scale(1.12);
+    transform: scale(1.1);
     box-shadow:
-        0 0 25px #ffd700,
-        0 0 50px #ffb700,
-        0 0 90px rgba(255,215,0,0.9);
+        0 0 25px rgba(212,175,55,1),
+        0 0 60px rgba(212,175,55,0.8);
 }
 </style>
 </head>
@@ -104,22 +126,23 @@ body {
 
 <div class="center">
     <div class="text-block">
-🔥 <b>VOID — сила, стиль и дисциплина.</b> 🔥 <br><br>
+VOID — сила. Стиль. Дисциплина.<br><br>
 
-Наша фама VOID — одна из самых сильных и организованных на проекте Majestic Role Play, сервер Miami.<br><br>
+Мы не участвуем в игре.<br>
+Мы управляем ею.<br><br>
 
-Мы не просто играем — мы доминируем.<br>
-Стабильный онлайн, сильный состав, чёткая координация и уважение внутри коллектива.<br><br>
+Капты — под контролем.<br>
+Бизнес — под влиянием.<br>
+Конкуренция — под давлением.<br><br>
 
-⚔️ Войны? — Мы там.<br>
-💰 Бизнес? — Мы в деле.<br>
-🏆 Конкуренция? — Мы создаём её.<br><br>
-
-VOID — это репутация. Это уровень. Это стиль.
+VOID — это не просто название.<br>
+Это статус.<br>
+Это власть.<br>
+Это наследие.
     </div>
 
     <a class="king-btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
-        👑 Стать королём
+        👑 СТАТЬ КОРОЛЁМ
     </a>
 </div>
 
