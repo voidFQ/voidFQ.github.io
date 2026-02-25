@@ -6,11 +6,14 @@
 <title>VOID FQ</title>
 
 <style>
+html {
+    scroll-behavior: smooth;
+}
+
 * { box-sizing: border-box; }
 
 body {
     margin:0;
-    min-height:100vh;
     background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
     background-size: cover;
     background-position: center;
@@ -37,7 +40,7 @@ body {
     mix-blend-mode: screen;
 }
 
-/* центр */
+/* главный экран */
 .center {
     position: relative;
     z-index: 3;
@@ -52,36 +55,57 @@ body {
     min-height:100vh;
 }
 
-/* уменьшенный текст */
 .text-block {
     font-size:18px;
     line-height:1.5;
-    letter-spacing:0.3px;
     max-width:800px;
     text-shadow: 0 0 6px rgba(0,0,0,0.9);
 }
 
-/* кнопка */
-.king-btn {
-    margin-top:50px;
-    padding:20px 60px;
-    font-size:22px;
-    font-weight:900;
-    border-radius:60px;
+/* кнопки */
+.buttons {
+    margin-top:40px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.btn {
+    padding:18px 50px;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:50px;
     text-decoration:none;
     color:#111;
     background: linear-gradient(45deg,#d4af37,#b8860b);
     transition:0.3s;
-    display:inline-block;
-    letter-spacing:1px;
     box-shadow:0 0 15px rgba(212,175,55,0.8);
 }
 
-.king-btn:hover {
+.btn:hover {
     transform: scale(1.08);
-    box-shadow:
-        0 0 30px rgba(212,175,55,1),
-        0 0 70px rgba(212,175,55,0.9);
+}
+
+/* раздел правил */
+.rules-section {
+    position: relative;
+    z-index: 3;
+    padding:100px 20px;
+    background: rgba(0,0,0,0.85);
+}
+
+.rules-container {
+    max-width:900px;
+    margin:auto;
+    font-size:17px;
+    line-height:1.6;
+}
+
+.rules-container h2 {
+    text-align:center;
+    margin-bottom:40px;
+    font-size:28px;
 }
 </style>
 </head>
@@ -89,32 +113,54 @@ body {
 <body>
 
 <div class="overlay"></div>
-
 <img src="logo.png" class="brand-logo">
 
 <div class="center">
     <div class="text-block">
 🔥 <b>VOID — сила, стиль и дисциплина.</b> 🔥 <br><br>
 
-Наша фама VOID — одна из самых сильных и организованных на проекте Majestic Role Play, сервер Miami.<br><br>
-
 Мы не просто играем — мы доминируем.<br>
 ⚔️ Войны? — Мы там.<br>
 💰 Бизнес? — Мы в деле.<br>
-🏆 Конкуренция? — Мы создаём её.<br><br>
-
-VOID — это не просто название.<br>
-Это репутация.<br>
-Это уровень.<br>
-Это стиль игры.<br><br>
-
-💜 VOID — будь частью легенды.
+🏆 Конкуренция? — Мы создаём её.
     </div>
 
-    <a class="king-btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
-        👑 СТАТЬ КОРОЛЁМ
-    </a>
+    <div class="buttons">
+        <a class="btn" href="#rules">📜 Правила семьи</a>
+        <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
+            👑 СТАТЬ КОРОЛЁМ
+        </a>
+    </div>
 </div>
+
+<!-- РАЗДЕЛ ПРАВИЛ -->
+<section id="rules" class="rules-section">
+    <div class="rules-container">
+        <h2>📜 Правила семьи VOID</h2>
+
+        <b>1. Общие положения:</b><br>
+        1.1 Семья строго 16+<br>
+        Исключение: Под свою ответственность очень хорошего знакомого<br>
+        1.2 Семья это место где все должны быть друг за друга и помогать в любых сложных ситуациях.<br>
+        1.3 Адекватность и целеустремлённость.<br>
+        1.4 Двигаться с семьёй по фракциям.<br>
+        Исключение: Личное разрешения лидера/овнера.<br>
+        1.5 Контракты обязательны к выполнению.<br>
+        1.6 Доказательства о выполненном контракте отправлять в раздел с нужным контрактом.<br><br>
+
+        <b>2. Запрещается:</b><br>
+        2.1 Обсуждать или дискредитировать по политическим взглядам или принадлежности!<br>
+        2.2 Разводить конфликты внутри семьи!<br>
+        2.3 Оскорблять или упоминать в оскорбительном/отрицательном смысле родных и близких!<br>
+        2.4 Фриковать (брить, кидать в стяжки, похищать и т.д.) людей из семьи!<br>
+        2.5 Флуд (частая отправка однотипных сообщений).<br>
+        2.6 Угрозы в любой форме участникам Discord сервера.<br>
+        2.7 Постинг любого NSFW контента в общедоступных каналах.<br>
+        2.8 Использование стороннего ПО.<br>
+        2.9 Намеренно нарушать или подталкивать на нарушения правил проекта.<br>
+        2.10 Оставлять транспорт без бензина.
+    </div>
+</section>
 
 </body>
 </html>
