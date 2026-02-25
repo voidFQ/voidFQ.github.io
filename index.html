@@ -6,100 +6,136 @@
 <title>VOID FQ</title>
 
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
+* { box-sizing: border-box; }
 
 body {
+    margin:0;
     min-height:100vh;
     background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    color:white;
+    overflow:hidden;
 }
 
-/* затемнение фона */
-body::after {
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-    top:0;
-    left:0;
-    z-index:0;
+/* затемнение */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index:1;
 }
 
-/* Контейнер */
-.center {
-    position:relative;
-    z-index:2;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-}
+/* НЕОН VOID */
+.brand {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    background: rgba(0,0,0,0.6);
+    padding: 10px 18px;
+    border-radius: 12px;
+    z-index: 3;
 
-/* VOID стиль */
-.void-title {
-    font-size:120px;
-    font-weight:900;
     color:black;
-    letter-spacing:15px;
-    text-transform:uppercase;
 
-    /* НЕОН */
     text-shadow:
         0 0 5px #8a2be2,
         0 0 10px #8a2be2,
         0 0 20px #8a2be2,
-        0 0 40px #8a2be2,
-        0 0 80px #8a2be2;
-
-    animation: glow 2s infinite alternate;
+        0 0 40px #a855f7;
 }
 
-@keyframes glow {
-    from {
-        text-shadow:
-            0 0 5px #8a2be2,
-            0 0 15px #8a2be2,
-            0 0 30px #8a2be2;
-    }
-    to {
-        text-shadow:
-            0 0 20px #a855f7,
-            0 0 40px #a855f7,
-            0 0 80px #a855f7;
-    }
+/* центр */
+.center {
+    position: relative;
+    z-index: 3;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    max-width:900px;
+    margin:auto;
+    min-height:100vh;
 }
 
-/* Подпись */
-.subtitle {
-    margin-top:20px;
+.text-block {
+    background: rgba(0,0,0,0.65);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    font-size:20px;
+    line-height:1.6;
+}
+
+.btn {
+    margin-top:30px;
+    padding:18px 40px;
     font-size:22px;
-    color:#aaa;
-    letter-spacing:5px;
+    font-weight:bold;
+    border-radius:15px;
+    text-decoration:none;
+    color:white;
+    background: linear-gradient(45deg,#8a2be2,#ff00ff);
+    transition:0.2s;
+    display:inline-block;
 }
 
-/* Частицы */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow:0 0 20px #ff00ff;
+}
+
+/* частицы */
 canvas {
-    position:absolute;
+    position:fixed;
     top:0;
     left:0;
-    z-index:1;
+    z-index:2;
 }
 </style>
 </head>
+
 <body>
 
-<div class="center">
-    <div class="void-title">VOID</div>
-    <div class="subtitle">FACTION</div>
-</div>
-
+<div class="overlay"></div>
 <canvas id="particles"></canvas>
+
+<div class="brand">VOID FQ</div>
+
+<div class="center">
+    <div class="text-block">
+🔥 <b>VOID — сила, стиль и дисциплина.</b> 🔥 <br><br>
+
+Наша фама VOID — одна из самых сильных и организованных на проекте Majestic Role Play, сервер Miami.<br><br>
+
+Мы не просто играем — мы доминируем.<br>
+Стабильный онлайн, сильный состав, чёткая координация и уважение внутри коллектива.<br><br>
+
+⚔️ Войны? — Мы там.<br>
+💰 Бизнес? — Мы в деле.<br>
+🏆 Конкуренция? — Мы создаём её.<br><br>
+
+VOID — это не просто название.<br>
+Это репутация.<br>
+Это уровень.<br>
+Это стиль игры.<br><br>
+
+Если ты хочешь быть частью сильнейших —<br>
+ждём тебя на Majestic RP, сервер Miami.<br><br>
+
+💜 <b>VOID — будь частью легенды.</b>
+    </div>
+
+    <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
+        Подать заявку
+    </a>
+</div>
 
 <script>
 const canvas = document.getElementById("particles");
@@ -108,15 +144,15 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let particlesArray = [];
+let particles = [];
 
 class Particle {
     constructor(){
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;   // крупнее
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.6 - 0.3;
+        this.speedY = Math.random() * 0.6 - 0.3;
     }
 
     update(){
@@ -128,25 +164,25 @@ class Particle {
     }
 
     draw(){
-        ctx.fillStyle = "rgba(168,85,247,0.9)"; // ярче
+        ctx.fillStyle = "rgba(168,85,247,0.9)";
         ctx.shadowColor = "#a855f7";
-        ctx.shadowBlur = 15;
+        ctx.shadowBlur = 12;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
         ctx.fill();
     }
 }
 
 function init(){
-    particlesArray = [];
-    for(let i = 0; i < 150; i++){ // больше частиц
-        particlesArray.push(new Particle());
+    particles = [];
+    for(let i=0;i<130;i++){
+        particles.push(new Particle());
     }
 }
 
 function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    particlesArray.forEach(p => {
+    particles.forEach(p=>{
         p.update();
         p.draw();
     });
@@ -156,7 +192,7 @@ function animate(){
 init();
 animate();
 
-window.addEventListener("resize", function(){
+window.addEventListener("resize", ()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     init();
