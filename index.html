@@ -25,7 +25,7 @@ body {
     background: rgba(0,0,0,0.55);
 }
 
-/* VOID FQ теперь без чёрной плашки */
+/* VOID FQ — без плашки + кибер-свечение */
 .brand {
     position: fixed;
     top: 20px;
@@ -34,6 +34,8 @@ body {
     font-weight: bold;
     letter-spacing: 2px;
     z-index: 2;
+    opacity: 0.95;
+    text-shadow: 0 0 12px rgba(186, 85, 255, 0.8), 0 0 28px rgba(255, 0, 255, 0.35);
 }
 
 .center {
@@ -48,6 +50,14 @@ body {
     max-width:900px;
     margin:auto;
     min-height:100vh;
+
+    /* плавное появление */
+    animation: fadeUp .6s ease-out both;
+}
+
+@keyframes fadeUp{
+    from { opacity:0; transform: translateY(18px); }
+    to   { opacity:1; transform: translateY(0); }
 }
 
 .text-block {
@@ -59,6 +69,37 @@ body {
     line-height:1.6;
 }
 
+/* Блок "пункты силы" */
+.stats{
+    margin-top: 18px;
+    display:flex;
+    gap:12px;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.stat{
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.10);
+    padding: 10px 14px;
+    border-radius: 14px;
+    min-width: 140px;
+    backdrop-filter: blur(10px);
+}
+
+.stat b{
+    display:block;
+    letter-spacing: 1px;
+}
+
+.stat span{
+    display:block;
+    opacity: 0.85;
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+/* Кнопка */
 .btn {
     margin-top:30px;
     padding:18px 40px;
@@ -70,11 +111,31 @@ body {
     background: linear-gradient(45deg,#8a2be2,#ff00ff);
     transition:0.2s;
     display:inline-block;
+
+    position: relative;
+    box-shadow: 0 0 18px rgba(255,0,255,0.35);
+}
+
+/* Пульс-рамка */
+.btn::after{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border-radius: 18px;
+    border: 2px solid rgba(255,0,255,0.35);
+    opacity: 0;
+    animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+    0%{ transform: scale(0.95); opacity: 0.75; }
+    70%{ transform: scale(1.12); opacity: 0; }
+    100%{ transform: scale(1.12); opacity: 0; }
 }
 
 .btn:hover {
     transform: scale(1.05);
-    box-shadow:0 0 20px #ff00ff;
+    box-shadow:0 0 28px rgba(255,0,255,0.6);
 }
 </style>
 </head>
@@ -107,6 +168,12 @@ VOID — это не просто название.<br>
 ждём тебя на Majestic RP, сервер Miami.<br><br>
 
 💜 <b>VOID — будь частью легенды.</b>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><b>⚔️ WAR</b><span>координация</span></div>
+        <div class="stat"><b>💼 BIZ</b><span>контроль</span></div>
+        <div class="stat"><b>👑 RP</b><span>уровень</span></div>
     </div>
 
     <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
