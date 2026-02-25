@@ -20,7 +20,6 @@ body {
     overflow:hidden;
 }
 
-/* затемнение */
 .overlay {
     position: fixed;
     inset: 0;
@@ -28,28 +27,24 @@ body {
     z-index:1;
 }
 
-/* НЕОН VOID */
+/* VOID слева — без рамки */
 .brand {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 26px;
-    font-weight: bold;
-    background: rgba(0,0,0,0.6);
-    padding: 10px 18px;
-    border-radius: 12px;
+    top: 25px;
+    left: 25px;
+    font-size: 30px;
+    font-weight: 900;
     z-index: 3;
-
     color:black;
+    letter-spacing:4px;
 
     text-shadow:
         0 0 5px #8a2be2,
-        0 0 10px #8a2be2,
-        0 0 20px #8a2be2,
-        0 0 40px #a855f7;
+        0 0 15px #8a2be2,
+        0 0 30px #a855f7;
 }
 
-/* центр */
+/* Центр */
 .center {
     position: relative;
     z-index: 3;
@@ -64,31 +59,39 @@ body {
     min-height:100vh;
 }
 
+/* Центральный блок — более прозрачный */
 .text-block {
-    background: rgba(0,0,0,0.65);
+    background: rgba(0,0,0,0.45);
     padding:30px;
     border-radius:20px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     font-size:20px;
     line-height:1.6;
 }
 
-.btn {
+/* Кнопки */
+.buttons {
     margin-top:30px;
-    padding:18px 40px;
-    font-size:22px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.btn {
+    padding:16px 35px;
+    font-size:20px;
     font-weight:bold;
-    border-radius:15px;
+    border-radius:14px;
     text-decoration:none;
     color:white;
     background: linear-gradient(45deg,#8a2be2,#ff00ff);
     transition:0.2s;
-    display:inline-block;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow:0 0 20px #ff00ff;
+    transform: scale(1.08);
+    box-shadow:0 0 25px #ff00ff;
 }
 
 /* частицы */
@@ -106,7 +109,7 @@ canvas {
 <div class="overlay"></div>
 <canvas id="particles"></canvas>
 
-<div class="brand">VOID FQ</div>
+<div class="brand">VOID</div>
 
 <div class="center">
     <div class="text-block">
@@ -121,20 +124,14 @@ canvas {
 💰 Бизнес? — Мы в деле.<br>
 🏆 Конкуренция? — Мы создаём её.<br><br>
 
-VOID — это не просто название.<br>
-Это репутация.<br>
-Это уровень.<br>
-Это стиль игры.<br><br>
-
-Если ты хочешь быть частью сильнейших —<br>
-ждём тебя на Majestic RP, сервер Miami.<br><br>
-
-💜 <b>VOID — будь частью легенды.</b>
+VOID — это репутация. Это уровень. Это стиль.
     </div>
 
-    <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
-        Подать заявку
-    </a>
+    <div class="buttons">
+        <a class="btn" href="#">Лучшие на каптах</a>
+        <a class="btn" href="#">Лучшие на бизах</a>
+        <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">Стать королём</a>
+    </div>
 </div>
 
 <script>
@@ -175,7 +172,7 @@ class Particle {
 
 function init(){
     particles = [];
-    for(let i=0;i<130;i++){
+    for(let i=0;i<140;i++){
         particles.push(new Particle());
     }
 }
