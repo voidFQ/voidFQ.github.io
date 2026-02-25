@@ -15,18 +15,19 @@ html {
 body {
     margin:0;
     background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
-    background-size: cover;
+    background-size: cover;          /* НЕ сжатая */
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;    /* красиво держится */
     font-family: Arial, sans-serif;
     color:white;
 }
 
-/* затемнение */
+/* затемнение — но без квадрата */
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.45);
     z-index:1;
 }
 
@@ -36,7 +37,7 @@ body {
     top: 20px;
     left: 20px;
     width: 200px;
-    z-index: 3;
+    z-index: 5; /* выше всего */
     mix-blend-mode: screen;
 }
 
@@ -87,12 +88,11 @@ body {
     transform: scale(1.08);
 }
 
-/* раздел правил */
+/* РАЗДЕЛ ПРАВИЛ — БЕЗ ЧЕРНОГО КВАДРАТА */
 .rules-section {
     position: relative;
     z-index: 3;
-    padding:100px 20px;
-    background: rgba(0,0,0,0.85);
+    padding:120px 20px;
 }
 
 .rules-container {
@@ -100,6 +100,7 @@ body {
     margin:auto;
     font-size:17px;
     line-height:1.6;
+    text-shadow: 0 0 6px rgba(0,0,0,0.9);
 }
 
 .rules-container h2 {
@@ -133,12 +134,11 @@ body {
     </div>
 </div>
 
-<!-- РАЗДЕЛ ПРАВИЛ -->
 <section id="rules" class="rules-section">
     <div class="rules-container">
         <h2>📜 Правила семьи VOID</h2>
 
-        <b>1. Общие положения:</b><br>
+        1. Общие положения:<br>
         1.1 Семья строго 16+<br>
         Исключение: Под свою ответственность очень хорошего знакомого<br>
         1.2 Семья это место где все должны быть друг за друга и помогать в любых сложных ситуациях.<br>
@@ -148,7 +148,7 @@ body {
         1.5 Контракты обязательны к выполнению.<br>
         1.6 Доказательства о выполненном контракте отправлять в раздел с нужным контрактом.<br><br>
 
-        <b>2. Запрещается:</b><br>
+        2. Запрещается:<br>
         2.1 Обсуждать или дискредитировать по политическим взглядам или принадлежности!<br>
         2.2 Разводить конфликты внутри семьи!<br>
         2.3 Оскорблять или упоминать в оскорбительном/отрицательном смысле родных и близких!<br>
