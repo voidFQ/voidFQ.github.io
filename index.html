@@ -8,119 +8,269 @@
 <style>
 * { box-sizing: border-box; }
 
-body {
-    margin:0;
-    min-height:100vh;
-    background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: Arial, sans-serif;
-    color:white;
+:root{
+  --glass: rgba(10,10,14,.45);
+  --glass2: rgba(10,10,14,.25);
+  --stroke: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.72);
+  --btn: #d2a621;
+  --btn2:#f0c84f;
 }
 
-/* затемнение */
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index:1;
+body{
+  margin:0;
+  min-height:100vh;
+  background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  overflow-x:hidden;
 }
 
-/* логотип */
-.brand-logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 200px;
-    z-index: 5;
-    mix-blend-mode: screen;
+.overlay{
+  position:fixed; inset:0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,.35), rgba(0,0,0,.75));
+  pointer-events:none;
 }
 
-/* центр */
-.center {
-    position: relative;
-    z-index: 3;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:40px;
-    max-width:900px;
-    margin:auto;
-    min-height:100vh;
+.topbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  padding:18px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:10;
 }
 
-/* текст */
-.text-block {
-    font-size:18px;
-    line-height:1.5;
-    max-width:800px;
-    text-shadow: 0 0 6px rgba(0,0,0,0.9);
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  user-select:none;
 }
 
-/* кнопки */
-.buttons {
-    margin-top:40px;
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
+.logo img{
+  width:78px;
+  height:auto;
+  filter: drop-shadow(0 0 16px rgba(168,112,255,.55));
 }
 
-.btn {
-    padding:18px 50px;
-    font-size:18px;
-    font-weight:bold;
-    border-radius:50px;
-    text-decoration:none;
-    color:#111;
-    background: linear-gradient(45deg,#d4af37,#b8860b);
-    transition:0.3s;
-    box-shadow:0 0 15px rgba(212,175,55,0.8);
+.center{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:110px 18px 70px;
 }
 
-.btn:hover {
-    transform: scale(1.08);
+.card{
+  width:min(920px, 92vw);
+  padding:28px 26px;
+  border-radius:26px;
+  background: linear-gradient(180deg, var(--glass), var(--glass2));
+  border: 1px solid var(--stroke);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 55px rgba(0,0,0,.45);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  animation: pop .55s ease-out both;
 }
+
+@keyframes pop{
+  from { transform: translateY(14px); opacity:0; }
+  to   { transform: translateY(0); opacity:1; }
+}
+
+.card:before{
+  content:"";
+  position:absolute; inset:-2px;
+  background: radial-gradient(circle at 30% 20%, rgba(168,112,255,.18), transparent 55%),
+              radial-gradient(circle at 70% 80%, rgba(255,215,64,.16), transparent 55%);
+  pointer-events:none;
+}
+
+.h1{
+  font-size:20px;
+  font-weight:800;
+  margin:0 0 14px;
+  text-shadow: 0 0 18px rgba(168,112,255,.35);
+}
+
+.p{
+  margin:10px 0;
+  color: var(--muted);
+  line-height:1.6;
+}
+
+.points{
+  margin:16px auto 10px;
+  width:min(520px, 92%);
+  text-align:left;
+  color: rgba(255,255,255,.86);
+  line-height:1.75;
+}
+
+.points div{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+hr{
+  border:none;
+  height:1px;
+  background: rgba(255,255,255,.10);
+  margin:16px 0;
+}
+
+.btns{
+  margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 20px;
+  border-radius:16px;
+  background: linear-gradient(180deg, var(--btn2), var(--btn));
+  color:#1b1400;
+  font-weight:900;
+  text-decoration:none;
+  min-width:220px;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.btn:hover{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 42px rgba(0,0,0,.42);
+  filter: saturate(1.05);
+}
+
+.btn:active{
+  transform: translateY(0) scale(.99);
+}
+
+.small{
+  font-size:12px;
+  opacity:.85;
+}
+
+#particles{
+  position:fixed; inset:0;
+  z-index:2;
+  pointer-events:none;
+}
+
+.footer{
+  position:fixed;
+  bottom:16px; left:0; right:0;
+  display:flex;
+  justify-content:center;
+  z-index:3;
+  opacity:.85;
+  user-select:none;
+}
+
+.footer img{
+  width:180px;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.55));
+}
+
 </style>
 </head>
-
 <body>
 
+<canvas id="particles"></canvas>
 <div class="overlay"></div>
-<img src="logo.png" class="brand-logo" alt="VOID logo">
+
+<div class="topbar">
+  <div class="logo">
+    <img src="https://i.imgur.com/9mQpZkF.png" alt="VOID" />
+  </div>
+</div>
 
 <div class="center">
-    <div class="text-block">
-🔥 <b>VOID — сила, стиль и дисциплина.</b> 🔥 <br><br>
+  <div class="card">
+    <h1 class="h1">🔥 VOID — сила, стиль и дисциплина. 🔥</h1>
 
-Наша фама VOID — одна из самых сильных и организованных на проекте Majestic Role Play, сервер Miami.<br><br>
+    <p class="p">Наша фама VOID — одна из самых сильных и организованных на проекте Majestic Role Play, сервер Miami.</p>
+    <p class="p">Мы не просто играем — мы доминируем. Стабильный онлайн, сильный состав, чёткая координация и уважение внутри коллектива.</p>
 
-Мы не просто играем — мы доминируем.<br>
-Стабильный онлайн, сильный состав, чёткая координация и уважение внутри коллектива.<br><br>
-
-⚔️ Войны? — Мы там.<br>
-💰 Бизнес? — Мы в деле.<br>
-🏆 Конкуренция? — Мы создаём её.<br><br>
-
-VOID — это не просто название.<br>
-Это репутация.<br>
-Это уровень.<br>
-Это стиль игры.<br><br>
-
-💜 VOID — будь частью легенды.
+    <div class="points">
+      <div>⚔️ <span>Войны? — Мы там.</span></div>
+      <div>💰 <span>Бизнес? — Мы в деле.</span></div>
+      <div>🏆 <span>Конкуренция? — Мы создаём её.</span></div>
     </div>
 
-    <div class="buttons">
-        <a class="btn" href="rules.html">📜 Правила семьи</a>
-        <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
-            👑 СТАТЬ КОРОЛЁМ
-        </a>
+    <hr>
+
+    <p class="p"><b>VOID</b> — это не просто название.<br>Это репутация. Это уровень. Это стиль игры.</p>
+    <p class="p">💜 <b>VOID</b> — будь частью легенды.</p>
+
+    <div class="btns">
+      <a class="btn" href="rules.html">📜 Правила семьи</a>
+      <a class="btn" href="#" onclick="alert('Скоро добавим заявку 😈'); return false;">👑 СТАТЬ КОРОЛЁМ</a>
+      <a class="btn" href="members.html">👥 Список участников</a>
     </div>
+    <div class="small" style="margin-top:14px;color:rgba(255,255,255,.6)">
+      voidfq.github.io
+    </div>
+  </div>
 </div>
+
+<div class="footer">
+  <img src="https://majestic-rp.ru/images/home/logo.svg" alt="Majestic" />
+</div>
+
+<script>
+/* простые частицы */
+const c = document.getElementById('particles');
+const ctx = c.getContext('2d');
+let w, h, particles;
+
+function resize(){
+  w = c.width = window.innerWidth;
+  h = c.height = window.innerHeight;
+  particles = Array.from({length: 85}, () => ({
+    x: Math.random()*w,
+    y: Math.random()*h,
+    r: Math.random()*2 + 0.6,
+    s: Math.random()*0.7 + 0.2,
+    a: Math.random()*Math.PI*2
+  }));
+}
+window.addEventListener('resize', resize);
+resize();
+
+function tick(){
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  for(const p of particles){
+    p.y += p.s;
+    p.x += Math.sin(p.a) * 0.25;
+    p.a += 0.01;
+    if(p.y > h+10){ p.y = -10; p.x = Math.random()*w; }
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fill();
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
 
 </body>
 </html>
