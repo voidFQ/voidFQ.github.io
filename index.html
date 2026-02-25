@@ -27,7 +27,7 @@ body {
     z-index:1;
 }
 
-/* VOID слева — без рамки */
+/* VOID слева */
 .brand {
     position: fixed;
     top: 25px;
@@ -59,7 +59,7 @@ body {
     min-height:100vh;
 }
 
-/* Центральный блок — более прозрачный */
+/* Текст блок */
 .text-block {
     background: rgba(0,0,0,0.45);
     padding:30px;
@@ -69,29 +69,31 @@ body {
     line-height:1.6;
 }
 
-/* Кнопки */
-.buttons {
-    margin-top:30px;
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.btn {
-    padding:16px 35px;
-    font-size:20px;
-    font-weight:bold;
-    border-radius:14px;
+/* Кнопка КОРОЛЬ */
+.king-btn {
+    margin-top:50px;
+    padding:20px 50px;
+    font-size:24px;
+    font-weight:900;
+    border-radius:16px;
     text-decoration:none;
-    color:white;
-    background: linear-gradient(45deg,#8a2be2,#ff00ff);
-    transition:0.2s;
+    color:black;
+    background: linear-gradient(45deg,#ffd700,#ffb700);
+    transition:0.3s;
+    display:inline-block;
+
+    box-shadow:
+        0 0 10px #ffd700,
+        0 0 25px #ffb700,
+        0 0 50px rgba(255,215,0,0.6);
 }
 
-.btn:hover {
-    transform: scale(1.08);
-    box-shadow:0 0 25px #ff00ff;
+.king-btn:hover {
+    transform: scale(1.12);
+    box-shadow:
+        0 0 20px #ffd700,
+        0 0 40px #ffb700,
+        0 0 80px rgba(255,215,0,0.9);
 }
 
 /* частицы */
@@ -127,11 +129,9 @@ canvas {
 VOID — это репутация. Это уровень. Это стиль.
     </div>
 
-    <div class="buttons">
-        <a class="btn" href="#">Лучшие на каптах</a>
-        <a class="btn" href="#">Лучшие на бизах</a>
-        <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">Стать королём</a>
-    </div>
+    <a class="king-btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
+        👑 Стать королём
+    </a>
 </div>
 
 <script>
