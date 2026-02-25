@@ -12,18 +12,11 @@ body {
     margin:0;
     min-height:100vh;
     background-image: url("https://majestic-rp.ru/images/home/showcase/cover.jpg");
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100%;
-    animation: bgZoom 25s ease-in-out infinite alternate;
     font-family: Arial, sans-serif;
     color:white;
-}
-
-/* Плавный zoom */
-@keyframes bgZoom {
-  from { background-size: 100%; }
-  to { background-size: 110%; }
 }
 
 /* затемнение */
@@ -59,28 +52,28 @@ body {
     min-height:100vh;
 }
 
-/* текст */
+/* уменьшенный текст */
 .text-block {
-    font-size:22px;
-    line-height:1.6;
-    letter-spacing:0.5px;
-    max-width:850px;
-    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    font-size:18px;
+    line-height:1.5;
+    letter-spacing:0.3px;
+    max-width:800px;
+    text-shadow: 0 0 6px rgba(0,0,0,0.9);
 }
 
 /* достижения */
 .stats {
-    margin-top:40px;
-    font-size:20px;
+    margin-top:35px;
+    font-size:17px;
+    line-height:1.6;
     opacity:0.95;
-    line-height:1.8;
 }
 
 /* кнопка */
 .king-btn {
-    margin-top:60px;
-    padding:22px 70px;
-    font-size:24px;
+    margin-top:50px;
+    padding:20px 60px;
+    font-size:22px;
     font-weight:900;
     border-radius:60px;
     text-decoration:none;
@@ -89,20 +82,14 @@ body {
     transition:0.3s;
     display:inline-block;
     letter-spacing:1px;
-
     box-shadow:0 0 15px rgba(212,175,55,0.8);
-    animation: pulse 2.5s infinite;
-}
-
-/* Пульсация кнопки */
-@keyframes pulse {
-  0% { box-shadow:0 0 15px rgba(212,175,55,0.8); }
-  50% { box-shadow:0 0 40px rgba(212,175,55,1); }
-  100% { box-shadow:0 0 15px rgba(212,175,55,0.8); }
 }
 
 .king-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
+    box-shadow:
+        0 0 30px rgba(212,175,55,1),
+        0 0 70px rgba(212,175,55,0.9);
 }
 </style>
 </head>
