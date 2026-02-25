@@ -17,12 +17,26 @@ body {
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
     color:white;
+    overflow-x: hidden;
+}
+
+/* Градиентное свечение по краям */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index: 1;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(186,85,255,0.15), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(255,0,255,0.15), transparent 40%);
 }
 
 .overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.55);
+    z-index: 1;
 }
 
 /* VOID FQ — без плашки + кибер-свечение */
@@ -33,14 +47,15 @@ body {
     font-size: 26px;
     font-weight: bold;
     letter-spacing: 2px;
-    z-index: 2;
+    z-index: 3;
     opacity: 0.95;
     text-shadow: 0 0 12px rgba(186, 85, 255, 0.8), 0 0 28px rgba(255, 0, 255, 0.35);
 }
 
+/* Контейнер */
 .center {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -60,6 +75,23 @@ body {
     to   { opacity:1; transform: translateY(0); }
 }
 
+/* Большой полупрозрачный VOID на фоне */
+.bg-word{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: min(22vw, 220px);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    opacity: 0.05;
+    pointer-events:none;
+    user-select:none;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+/* Текстовый блок */
 .text-block {
     background: rgba(0,0,0,0.65);
     padding:30px;
@@ -67,6 +99,7 @@ body {
     backdrop-filter: blur(10px);
     font-size:20px;
     line-height:1.6;
+    z-index: 3;
 }
 
 /* Блок "пункты силы" */
@@ -76,6 +109,7 @@ body {
     gap:12px;
     flex-wrap: wrap;
     justify-content:center;
+    z-index: 3;
 }
 
 .stat{
@@ -85,6 +119,7 @@ body {
     border-radius: 14px;
     min-width: 140px;
     backdrop-filter: blur(10px);
+    transition:0.3s;
 }
 
 .stat b{
@@ -99,6 +134,13 @@ body {
     font-size: 14px;
 }
 
+/* Hover на карточках */
+.stat:hover{
+    transform: translateY(-6px);
+    border-color: rgba(255,0,255,0.5);
+    box-shadow: 0 0 15px rgba(255,0,255,0.3);
+}
+
 /* Кнопка */
 .btn {
     margin-top:30px;
@@ -111,8 +153,8 @@ body {
     background: linear-gradient(45deg,#8a2be2,#ff00ff);
     transition:0.2s;
     display:inline-block;
-
     position: relative;
+    z-index: 3;
     box-shadow: 0 0 18px rgba(255,0,255,0.35);
 }
 
@@ -137,6 +179,15 @@ body {
     transform: scale(1.05);
     box-shadow:0 0 28px rgba(255,0,255,0.6);
 }
+
+/* Статус "набор открыт" */
+.status{
+    margin-top:15px;
+    font-size:14px;
+    color:#00ff88;
+    letter-spacing:1px;
+    z-index: 3;
+}
 </style>
 </head>
 
@@ -147,6 +198,8 @@ body {
 <div class="brand">VOID FQ</div>
 
 <div class="center">
+    <div class="bg-word">VOID</div>
+
     <div class="text-block">
 🔥 <b>VOID — сила, стиль и дисциплина.</b> 🔥 <br><br>
 
@@ -179,7 +232,54 @@ VOID — это не просто название.<br>
     <a class="btn" href="https://discord.gg/E6P5Jgr6" target="_blank">
         СТАНЬ ЛЕГЕНДОЙ
     </a>
+
+    <div class="status">● Набор открыт</div>
 </div>
+
+<!-- Кибер-частицы на фоне -->
+<script>
+const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+canvas.style.position = "fixed";
+canvas.style.top = 0;
+canvas.style.left = 0;
+canvas.style.zIndex = 0;
+canvas.style.pointerEvents = "none";
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+
+for(let i=0;i<60;i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*2 + 0.5,
+    d: Math.random()*1 + 0.2
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(186,85,255,0.4)";
+  for(let p of particles){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.y+=p.d;
+    if(p.y>canvas.height) p.y=0;
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
 
 </body>
 </html>
